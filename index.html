@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Web Page</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+    <form onsubmit="return validateForm()">
+        <input type="text" id="nameInput" placeholder="Enter your name"
+          onfocus="handleFocus()" onblur="handleBlur()" oninput="handleTyping()" />
+        <div class="error" id="errorMsg"></div>
+        <br><br>
+        <button type="submit">Submit</button>
+      </form>
+    
+      <script>
+        function handleFocus() {
+          console.log("Textbox is focused");
+          document.getElementById("errorMsg").textContent = "";
+        }
+    
+        function handleBlur() {
+          console.log("Textbox lost focus");
+        }
+    
+        function handleTyping() {
+          const input = document.getElementById("nameInput").value;
+          console.log("User is typing:", input);
+        }
+    
+        function validateForm() {
+          const name = document.getElementById("nameInput").value.trim();
+          if (name === "") {
+            document.getElementById("errorMsg").textContent = "Name is required!";
+            return false; // prevent form submission
+          }
+          alert("Form submitted! Name: " + name);
+          return true; // allow form submission
+        }
+      </script>
+
+</body>
